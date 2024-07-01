@@ -7,8 +7,9 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSchema } from "type-graphql";
 import CountryResolver from "./resolvers/CountryResolver";
+import RegionResolver from "./resolvers/RegionResolver";
 
-buildSchema({ resolvers: [CountryResolver] }).then((schema) => {
+buildSchema({ resolvers: [CountryResolver,RegionResolver] }).then((schema) => {
     db.initialize();
     const server = new ApolloServer({ schema });
   startStandaloneServer(server, {

@@ -1,16 +1,2 @@
--- SQLite
-
-CREATE TABLE IF NOT EXISTS "region" (
-  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-  "name" TEXT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS "country" (
-  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-  "code" TEXT NOT NULL,
-  "name" TEXT NOT NULL,
-  "emoji" TEXT NOT NULL,
-  "region_id" INTEGER NOT NULL,
-  FOREIGN KEY("region_id") REFERENCES "region"("id")
-
-);
+insert into country (code,name,emoji) values ('US','United States','🇺🇸');
+insert into country (code,name,emoji) values ('FR','France','🇫🇷');

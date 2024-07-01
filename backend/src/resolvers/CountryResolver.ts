@@ -8,13 +8,22 @@ class CountryResolver {
   @Query(() => [Country])
   async countries(
     @Arg("regionId", () => Int, { nullable: true }) regionID?: number,
-    @Arg("title", { nullable: true }) title?: string
+    @Arg("code", { nullable: true }) code?: string
   ) {
     return Country.find({
       relations: { region: true },
     });
   }
   
+  @Query(() => Country)
+  async getCountryById(@Arg("countryId", () => Int) id: number) {
+    const country = await Country.findOne({
+      where: { id },
+      relations: { region: true},
+    });
+    if (!country) throw new GraphQLError("not found");
+    return country;
+  }
 
   @Mutation(() => Country)
   async createCountry(

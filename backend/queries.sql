@@ -1,0 +1,7 @@
+-- SQLite
+CREATE TABLE IF NOT EXISTS "country" (
+  "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+  "code" TEXT NOT NULL,
+  "name" TEXT NOT NULL,
+  "emoji" TEXT NOT NULL
+);

@@ -14,8 +14,18 @@ class CountryResolver {
       relations: { region: true },
     });
   }
+  
 
-
+  @Mutation(() => Country)
+  async createCountry(
+    @Arg("code") code: string,
+    @Arg("name") name: string,
+    @Arg("emoji") emoji: string
+  ) {
+    const country = Country.create({ code, name, emoji });
+    await country.save();
+    return country;
+  }
 }
 
 export default CountryResolver;
